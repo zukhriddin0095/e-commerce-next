@@ -50,6 +50,13 @@ const ShoppingCard = () => {
       setProducts(updatedcart);
     }
   };
+   useEffect(() => {
+     if (typeof localStorage !== "undefined") {
+       const storedCarts =
+         JSON.parse(localStorage.getItem("carts") as string) || [];
+       setProducts(storedCarts);
+     }
+   }, []);
 
   useEffect(() => {
     const total = products.reduce((acc, i) => {
